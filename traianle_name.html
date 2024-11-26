@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangle Type Checker</title>
+  
+        <style>
+        /* General styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        /* Main container */
+        div {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        /* Heading */
+        h2 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            color: #fff;
+        }
+
+        /* Input fields */
+        input[type="number"] {
+            width: 90%;
+            margin: 10px auto;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            outline: none;
+        }
+
+        input[type="number"]:focus {
+            box-shadow: 0 2px 15px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Button */
+        button {
+            background-color: #2575fc;
+            border: none;
+            color: #fff;
+            font-size: 1rem;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #6a11cb;
+            transform: scale(1.05);
+        }
+
+        /* Display result */
+        #display {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ffecb3;
+        }
+    </style>
+
+</head>
+<body>
+    <div>
+        <h2>Triangle Type Checker</h2>
+        <div id="display">Enter the side lengths of a triangle</div>
+        <input type="number" id="side1" placeholder="Side 1">
+        <input type="number" id="side2" placeholder="Side 2">
+        <input type="number" id="side3" placeholder="Side 3">
+        <button onclick="checkTriangle()">Check Triangle</button>
+    </div>
+
+    <script>
+        function checkTriangle() {
+            const a = parseFloat(document.getElementById("side1").value);
+            const b = parseFloat(document.getElementById("side2").value);
+            const c = parseFloat(document.getElementById("side3").value);
+
+            // Validate if the sides form a valid triangle
+            const isValidTriangle = a > 0 && b > 0 && c > 0 && a + b > c && b + c > a   && a + c > b;
+
+            // Determine the type of triangle using ternary operators
+            const triangleType = !isValidTriangle
+                ? "Invalid Triangle"
+                : a === b && b === c
+                ? "Equilateral Triangle"
+                : a === b || b === c || a === c
+                ? "Isosceles Triangle"
+                : "Scalene Triangle";
+
+            document.getElementById("display").innerHTML = triangleType;
+        }
+    </script>
+</body>
+</html>

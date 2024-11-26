@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Voting Eligibility</title>
+    <style>
+       /* General Styles */
+       body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+            overflow: hidden;
+        }
+
+        /* Card Container */
+        div {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            padding: 25px 35px;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+            overflow: hidden; /* Ensure content stays inside */
+        }
+
+        /* Result Display */
+        #display {
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #555;
+            word-wrap: break-word; /* Break long words if necessary */
+            overflow-wrap: break-word;
+            max-width: 100%; /* Prevent it from exceeding the card width */
+        }
+
+        /* Input Field */
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input:focus {
+            border-color: #2575fc;
+            box-shadow: 0 4px 8px rgba(37, 117, 252, 0.2);
+            outline: none;
+        }
+
+        /* Button Styles */
+        button {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        button:active {
+            background-color: #1e7e34;
+            transform: scale(0.98);
+        }
+
+    </style>
+</head>
+
+<body>
+    <div>
+    
+        <div id="display">Enter 24 hours your Time stutas.</div>
+        <input type="number" id="input" placeholder="Enter your time">
+        <button onclick="timestutus()">Check Time stutas</button>
+    </div>
+    <script>
+        // timestutas
+        function timestutus() {
+    const x = parseFloat(document.getElementById("input").value); 
+    let y = x >= 0 && x <= 11.59 ? "Good Morning" :
+            x >= 12.00 && x < 20.15 ? "Good Afternoon" :
+            x >= 20.15 && x < 24 .00 ? "Good Evening" :
+            x >= 24.00 && x <= 24.00 ? "Good Night" :
+            "Invalid Time";
+
+    document.getElementById("display").innerHTML = y;
+}
+
+    </script>
+</body>
+
+</html>
